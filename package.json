@@ -8,15 +8,13 @@
     "vscode": "^1.11.0"
   },
   "categories": ["Other"],
-  "activationEvents": ["onCommand:extension.dedupe"],
+  "activationEvents": ["onCommand:extension.align"],
   "main": "./extension",
   "contributes": {
-    "commands": [
-      {
-        "command": "extension.align",
-        "title": "align"
-      }
-    ]
+    "commands": [{
+      "command": "extension.align",
+      "title": "align"
+    }]
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
