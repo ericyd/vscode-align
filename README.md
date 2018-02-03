@@ -8,8 +8,8 @@ This extension will do two things:
 
 ## Limitations
 
-* no language features (e.g. aligning on function calls, etc
-* lots of others, it's very basic
+* no language features (e.g. aligning on function calls or keywords)
+* doesn't align if one of the lines doesn't share a word - the word or token must be shared across all selected lines in order to align.
 
 ## Examples
 
@@ -57,5 +57,18 @@ function manyParamDefaults(param1      = "test",
 
 ### html
 
+Before:
+
 ```html
+<img src="img1.jpg" alt="an image named 'one'" width="100px" height="100px" />
+<img src="anotherimage.png" alt="secondary image" width="20em" height="20em" />
+<img src="thirdPic.gif" alt="funny gif" width="54.25%" height="32.68%" />
+```
+
+After:
+
+```html
+<img src="img1.jpg"         alt="an image named 'one'" width="100px"  height="100px"  />
+<img src="anotherimage.png" alt="secondary image"      width="20em"   height="20em"   />
+<img src="thirdPic.gif"     alt="funny gif"            width="54.25%" height="32.68%" />
 ```
