@@ -1,74 +1,65 @@
-# vscode-align
-A naive alignment extension for vscode
+# vscode-align README
 
-This extension will do two things:
+This is the README for your extension "vscode-align". After writing up a brief description, we recommend including the following sections.
 
-1. align multiple lines on `=` or `:` characters
-2. align multiple lines on words that are repeated in all lines
+## Features
 
-## Limitations
+Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
-* no language features (e.g. aligning on function calls or keywords)
-* doesn't align if one of the lines doesn't share a word - the word or token must be shared across all selected lines in order to align.
+For example if there is an image subfolder under your extension project workspace:
 
-## Examples
+\!\[feature X\]\(images/feature-x.png\)
 
-### css
+> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
-Before:
+## Requirements
 
-```css
-.my-class {
-    box-sizing: border-box;
-    background-color: #fff;
-    font-family: sans-serif;
-}
-```
+If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
-After:
+## Extension Settings
 
-```css
-.my-class {
-    box-sizing      : border-box;
-    background-color: #fff;
-    font-family     : sans-serif;
-}
-```
+Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-### js
+For example:
 
-Before:
+This extension contributes the following settings:
 
-```js
-function manyParamDefaults(param1 = "test",
-                           longerParam = 42,
-                           thirdParam = "twelve")
-{ return false; }
-```
+* `myExtension.enable`: enable/disable this extension
+* `myExtension.thing`: set to `blah` to do something
 
-After:
+## Known Issues
 
-```js
-function manyParamDefaults(param1      = "test",
-                           longerParam = 42,
-                           thirdParam  = "twelve")
-{ return false; }
-```
+Calling out known issues can help limit users opening duplicate issues against your extension.
 
-### html
+## Release Notes
 
-Before:
+Users appreciate release notes as you update your extension.
 
-```html
-<img src="img1.jpg" alt="an image named 'one'" width="100px" height="100px" />
-<img src="anotherimage.png" alt="secondary image" width="20em" height="20em" />
-<img src="thirdPic.gif" alt="funny gif" width="54.25%" height="32.68%" />
-```
+### 1.0.0
 
-After:
+Initial release of ...
 
-```html
-<img src="img1.jpg"         alt="an image named 'one'" width="100px"  height="100px"  />
-<img src="anotherimage.png" alt="secondary image"      width="20em"   height="20em"   />
-<img src="thirdPic.gif"     alt="funny gif"            width="54.25%" height="32.68%" />
-```
+### 1.0.1
+
+Fixed issue #.
+
+### 1.1.0
+
+Added features X, Y, and Z.
+
+-----------------------------------------------------------------------------------------------------------
+
+## Working with Markdown
+
+**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+
+* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
+* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
+* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
+
+### For more information
+
+* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
+* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+
+**Enjoy!**
