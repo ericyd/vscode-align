@@ -17,7 +17,7 @@
 		"commands": [
 			{
 				"command": "extension.align",
-				"title": "align"
+				"title": "Simple Align"
 			}
 		]
 	},
