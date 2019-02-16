@@ -13,7 +13,7 @@ export default class Line {
     // Separate each letter of the token in brackets to avoid regex special character conflict (such as |)
     this.token = new RegExp(`[${token.split('').join('][')}]`, 'g');
     this.skip = false;
-    this.empty = /^\s*$/.test(text)
+    this.empty = /^\s*$/.test(text);
     this.matches = this.getTokenMatches();
     this.lowestIndex = this.getLowestIndex();
     this.highestIndex = this.getHighestIndex();
@@ -22,9 +22,9 @@ export default class Line {
   getTokenMatches() {
     if (this.empty) return [];
     let match;
-    let matches = []
+    let matches = [];
     while ((match = this.token.exec(this.text)) !== null) {
-      matches.push(match)
+      matches.push(match);
     }
     if (matches.length === 0) {
       this.skip = true;
@@ -33,12 +33,12 @@ export default class Line {
   }
 
   getLowestIndex() {
-    const lowest = Math.min(...this.matches.map(m => m.index))
+    const lowest = Math.min(...this.matches.map(m => m.index));
     return lowest === Infinity ? 0 : lowest;
   }
 
   getHighestIndex() {
-    const highest = Math.max(...this.matches.map(m => m.index))
+    const highest = Math.max(...this.matches.map(m => m.index));
     return highest === -Infinity ? 0 : highest;
   }
 
@@ -58,7 +58,7 @@ export default class Line {
     const startIndex = match.index;
     const front = this.text.slice(0, startIndex);
     const back = this.text.slice(startIndex);
-    const spaces = " ".repeat(finalPosition - startIndex);
+    const spaces = ' '.repeat(finalPosition - startIndex);
     this.text = front + spaces + back;
     return this;
   }

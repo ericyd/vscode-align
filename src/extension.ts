@@ -1,7 +1,12 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { addTokens, AlignmentToken, calculateIndices, alignToken } from './alignmentToken2';
+import {
+  addTokens,
+  AlignmentToken,
+  calculateIndices,
+  alignToken
+} from './alignmentToken2';
 import { EOL } from 'os';
 import Lines from './lines';
 
@@ -10,25 +15,30 @@ import Lines from './lines';
 export function activate(context: vscode.ExtensionContext) {
   // The commandId parameter must match the command field in package.json
   let disposable = vscode.commands.registerCommand('extension.align', () => {
-
     // The code you place here will be executed every time your command is executed
     var activeEditor = vscode.window.activeTextEditor;
     if (!activeEditor) return;
 
     var activeDoc = activeEditor.document;
     // always start at beginning of line - omitting whitespace messes up the indicies used for alignment
-    var start = activeEditor.selection.isEmpty ? new vscode.Position(0, 0) : new vscode.Position(activeEditor.selection.start.line, 0);
-    var end = activeEditor.selection.isEmpty ? new vscode.Position(activeDoc.lineCount + 1, 0) : activeEditor.selection.end;
+    var start = activeEditor.selection.isEmpty
+      ? new vscode.Position(0, 0)
+      : new vscode.Position(activeEditor.selection.start.line, 0);
+    var end = activeEditor.selection.isEmpty
+      ? new vscode.Position(activeDoc.lineCount + 1, 0)
+      : activeEditor.selection.end;
     var activeDocText = activeDoc.getText(new vscode.Range(start, end));
 
-    let token = vscode.window.showInputBox({prompt: 'Enter the string to align on'}).then(token => {
-      if (!token) return;
-      console.log(token)
+    let token = vscode.window
+      .showInputBox({ prompt: 'Enter the string to align on' })
+      .then(token => {
+        if (!token) return;
+        console.log(token);
 
-      let lines: Lines = new Lines(activeDocText.split(EOL), token)
-      lines.align();
-      let joinedText = lines.join(EOL)
-    })
+        let lines: Lines = new Lines(activeDocText.split(EOL), token);
+        lines.align();
+        let joinedText = lines.join(EOL);
+      });
 
     /*
     Algorithm overview
@@ -49,7 +59,7 @@ export function activate(context: vscode.ExtensionContext) {
     */
 
     // define tokens that you always want to search for but will not be found by splitting on "word"
-    const ALWAYS_TOKENS = [":", "="];
+    const ALWAYS_TOKENS = [':', '='];
     let alignmentTokens: AlignmentToken[] = [];
     let finalText: string[];
     let finalTextJoined: string;
@@ -59,7 +69,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     //   // get repeated words: split first line into words and remove any values that are empty strings
     //   const words = finalText[0].split(/[=:\s\t]/).filter(l => l !== '');
-      
+
     //   // find and add tokens to the alignmentTokens list
     //   addTokens(alignmentTokens, ALWAYS_TOKENS, finalText);
 
@@ -94,13 +104,13 @@ export function activate(context: vscode.ExtensionContext) {
 
     try {
       return activeEditor.edit(editorEdit => {
-        editorEdit.delete(new vscode.Range(start, end))
+        editorEdit.delete(new vscode.Range(start, end));
         editorEdit.replace(start, finalTextJoined);
       });
     } catch (e) {
       console.error('error, try 2', e);
     }
-  })
+  });
 
   context.subscriptions.push(disposable);
 }
